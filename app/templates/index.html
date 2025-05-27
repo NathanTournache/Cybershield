@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détection d'intrusions - IDS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        input[type="file"], input[type="number"], button {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #loading {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🔐 Analyse du fichier réseau</h1>
+        <form method="POST" enctype="multipart/form-data" onsubmit="showLoading()">
+            <label for="file">1️⃣ Charger un fichier CSV au format CICIDS</label>
+            <input type="file" name="file" required>
+
+            <label for="threshold">2️⃣ Choisir un seuil de probabilité (0 à 1)</label>
+            <input type="number" name="threshold" step="0.01" min="0" max="1" value="0.8" required>
+
+            <button type="submit">🚀 Lancer la détection</button>
+        </form>
+
+        <div id="loading">⏳ Traitement en cours... Veuillez patienter...</div>
+    </div>
+</body>
+</html>
